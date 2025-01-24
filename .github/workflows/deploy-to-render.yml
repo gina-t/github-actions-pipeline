@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.18.0'
+          node-version: 18
 
       - name: Install dependencies
         run: npm install
@@ -30,5 +30,4 @@ jobs:
         run: |
           curl -X POST \
             -H "Accept: application/json" \
-            -H "Authorization: Bearer $RENDER_API_KEY" \
             $RENDER_DEPLOY_HOOK_URL

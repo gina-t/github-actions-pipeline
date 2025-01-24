@@ -1,4 +1,4 @@
-name: Run Cypress Tests
+name: Run Cypress Tests on Pull Request to Develop
 
 on:
   pull_request:
@@ -22,7 +22,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.18.0'
+          node-version: 18
 
       - name: Install dependencies
         run: npm install
