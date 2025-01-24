@@ -19,16 +19,18 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: 
+          npm install
+          cd server && npm install
+          cd ../client && npm install
 
       - name: Build project
         env:
           NODE_ENV: production
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: npm run render-build
 
       - name: Deploy to Render
-        env:
-          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL || '' }}
         run: |
           curl -X POST \
             -H "Accept: application/json" \

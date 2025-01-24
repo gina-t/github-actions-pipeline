@@ -1,17 +1,12 @@
-import dotenv from 'dotenv';
+import './config';
+import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import connectDB from './config/connection.js';
+import routes from './routes/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// Determine the environment and load the corresponding .env file
-const envFile = process.env.NODE_ENV === 'production' ? '../.env.production' : '../.env.development';
-dotenv.config({ path: path.resolve(__dirname, envFile) });
-
-import express from 'express';
-import connectDB from './config/connection.js';
-import routes from './routes/index.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
