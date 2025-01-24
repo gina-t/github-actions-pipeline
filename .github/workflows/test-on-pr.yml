@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set environment variables
+        run: echo "MONGODB_URI=mongodb://localhost:27017/techquiz" >> $GITHUB_ENV
+
       - name: Start server
         run: npm run start &
         env:
