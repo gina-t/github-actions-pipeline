@@ -35,8 +35,8 @@ npm install concurrently cypress react react-dom ts-node --save-dev
 3. In `server` directory, install dependencies:
 
 ```zsh
-npm install express mongoose
-npm install @types/express @types/node dotenv msw nodemon typescript vitest --save-dev
+npm install express mongoose dotenv
+npm install @types/dotenv @types/express @types/node  msw nodemon typescript vitest --save-dev
 ```
 4. Add the following nodemonConfig to `server/package.json`:
 
