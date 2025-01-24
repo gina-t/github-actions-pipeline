@@ -1,0 +1,39 @@
+name: Run Cypress Tests
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mongo:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.18.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start server
+        run: npm run start &
+        env:
+          MONGODB_URI: mongodb://localhost:27017/techquiz
+
+      - name: Wait for server to be ready
+        run: sleep 10
+
+      - name: Run Cypress tests
+        run: npm test

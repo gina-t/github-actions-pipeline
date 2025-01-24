@@ -98,7 +98,7 @@ MONGODB_URI=mongodb://127.0.0.1:27017/techquiz
 npm run build
 npm run start
 ```
-10. Seed the database:
+10. In `server`, seed the database:
 
 ```zsh
 npm run seed
@@ -107,5 +107,32 @@ npm run seed
 11. In `root` directory, open cypress:
 
 ```zsh
-npx cypress open
+npm run test-gui
 ```
+
+12. In `root` directory, create .github/workflows:
+
+```zsh
+mkdir -p .github/workflows
+```
+
+13. In `.github/workflows`, create yml files:
+
+```zsh
+touch .github/workflows/deploy-to-render.yml
+touch .github/workflows/test-on-pr.yml
+```
+
+14. In Render dashboard, create a new web service, connect your repo.
+
+15. After the service is created, disable auto-deploy and copy the deploy hook URL.
+
+16. Add a new secret to your github repo:
+
+```plaintext
+Name: RENDER_DEPLOY_HOOK_URL
+Value: deploy hook url copied from render
+```
+17. Update `deploy-to-render.yml` with secret.
+
+
