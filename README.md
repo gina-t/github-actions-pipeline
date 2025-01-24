@@ -109,7 +109,20 @@ npm run start
 11. In `root` directory, open cypress:
 
 ```zsh
-npm run test-gui
+npx cypress open
+```
+12. In `root` directory, add cypress.config.ts:
+
+```typescript
+export default defineConfig({
+  component: {
+    devServer: {
+      framework: "react",
+      bundler: "vite",
+    },
+    specPattern: "cypress/component/**/*.cy.{js,jsx,ts,tsx}",
+  },
+});
 ```
 
 12. In `root` directory, create .github/workflows:

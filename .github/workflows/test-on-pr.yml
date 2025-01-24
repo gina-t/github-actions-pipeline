@@ -38,5 +38,5 @@ jobs:
       - name: Wait for server to be ready
         run: sleep 10
 
-      - name: Run Cypress tests
-        run: npm test
+      - name: Run Cypress component tests
+        run: npm run test-component
