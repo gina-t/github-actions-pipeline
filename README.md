@@ -123,7 +123,7 @@ touch .github/workflows/deploy-to-render.yml
 touch .github/workflows/test-on-pr.yml
 ```
 
-14. In Render dashboard, create a new web service, connect your repo.
+14. In Render dashboard, create a new web service and connect your repo.
 
 15. After the service is created, disable auto-deploy and copy the deploy hook URL.
 
@@ -134,5 +134,13 @@ Name: RENDER_DEPLOY_HOOK_URL
 Value: deploy hook url copied from render
 ```
 17. Update `deploy-to-render.yml` with secret.
+
+18. In settings of your github repo, access Branches and add branch ruleset:
+
+```plaintext
+Ruleset Name: github-actions
+Target by inclusion pattern: develop
+Branch Rules: check require a pull request before merging, check require status checks to pass, add checks
+```
 
 
