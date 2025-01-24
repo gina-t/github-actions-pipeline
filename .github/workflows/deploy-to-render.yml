@@ -16,18 +16,20 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
       - name: Build project
+        env:
+          NODE_ENV: production
         run: npm run render-build
 
       - name: Deploy to Render
         env:
-          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL || '' }}
         run: |
           curl -X POST \
             -H "Accept: application/json" \
-            $RENDER_DEPLOY_HOOK_URL
+            ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
