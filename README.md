@@ -87,27 +87,42 @@ npm install @testing-library/dom @testing-library/jest-dom @testing-library/reac
 "references": [{ "path": "./tsconfig.node.json" }]
 }
 ```
-8. In `server` directory, create `.env` and add:
+8. In `server` directory, create `.env.development` and add:
 
 ```plaintext
 MONGODB_URI=mongodb://127.0.0.1:27017/techquiz
 ```
-9. In `server`, run build and start scripts:
+
+9. In `server` directory, create `env.production` and add:
+
+```plaintext
+MONGODB_URI=mongodb+srv://you MongoDB Atlas connection string
+```
+
+10. In `server` directory, run build and start scripts:
 
 ```zsh
 npm run build
 npm run start
 ```
-10. In `server`, seed the database:
-
-```zsh
-npm run seed
-```
 
 11. In `root` directory, open cypress:
 
 ```zsh
-npm run test-gui
+npx cypress open
+```
+12. In `root` directory, add cypress.config.ts:
+
+```typescript
+export default defineConfig({
+  component: {
+    devServer: {
+      framework: "react",
+      bundler: "vite",
+    },
+    specPattern: "cypress/component/**/*.cy.{js,jsx,ts,tsx}",
+  },
+});
 ```
 
 12. In `root` directory, create .github/workflows:
