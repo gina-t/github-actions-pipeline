@@ -96,7 +96,7 @@ MONGODB_URI=mongodb://127.0.0.1:27017/techquiz
 9. In `server` directory, create `env.production` and add:
 
 ```plaintext
-MONGODB_URI=mongodb+srv://you MongoDB Atlas connection string
+MONGODB_URI=mongodb+srv://your MongoDB Atlas connection string
 ```
 
 10. In `server` directory, run build and start scripts:
@@ -111,6 +111,7 @@ npm run start
 ```zsh
 npx cypress open
 ```
+
 12. In `root` directory, add cypress.config.ts:
 
 ```typescript
@@ -157,5 +158,9 @@ Ruleset Name: github-actions
 Target by inclusion pattern: develop
 Branch Rules: check require a pull request before merging, check require status checks to pass, add checks
 ```
+19. In Render, add environment variables for production:
 
+```plaintext
+MONGO_DB_URI:mongodb+srv://your MongoDB Atlas connection string
+````
 
