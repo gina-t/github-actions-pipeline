@@ -1,2 +1,2 @@
-declare const cleanDB: (modelName: "Question", collectionName: string) => Promise<void>;
+declare const cleanDB: (collectionName: string) => Promise<void>;
 export default cleanDB;

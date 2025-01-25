@@ -1,20 +1,15 @@
-import connectDB from "../config/connection.js";
 import Question from "../models/Question.js";
 import cleanDB from "./cleanDb.js";
-import techquizQuestions from './techquizQustions.json' assert { type: "json" };
+import pythonQuestions from "./pythonQuestions.json" assert { type: "json" };
 
 const seedDatabase = async () => {
   try {
-    console.log('Connecting to the database...');
-    await connectDB();
-    console.log('Database connected.');
-
     console.log('Cleaning the database...');
-    await cleanDB('Question', 'questions');
+    await cleanDB('questions');
     console.log('Database cleaned.');
 
     console.log('Inserting questions...');
-    await Question.insertMany(techquizQuestions);
+    await Question.insertMany(pythonQuestions);
     console.log('Questions inserted.');
 
     console.log('Seeding completed successfully!');
@@ -25,6 +20,4 @@ const seedDatabase = async () => {
   }
 };
 
-// Call the seedDatabase function to start the seeding process
 seedDatabase();
-
