@@ -6,7 +6,6 @@ export const getRandomQuestions = async (_req, res) => {
             { $sample: { size: 10 } },
             { $project: { __v: 0 } },
         ]);
-        console.log('Questions retrieved:', questions);
         res.status(200).json(questions);
     }
     catch (err) {
