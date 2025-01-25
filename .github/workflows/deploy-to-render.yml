@@ -19,7 +19,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: 
+        run: |
           npm install
           cd server && npm install
           cd ../client && npm install
@@ -28,7 +28,15 @@ jobs:
         env:
           NODE_ENV: production
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
-        run: npm run render-build
+        run: 
+          npm run render-build
+
+      - name: Start application
+        env:
+            NODE_ENV: production
+            MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        run:
+          npm run start
 
       - name: Deploy to Render
         run: |
