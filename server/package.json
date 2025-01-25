@@ -5,9 +5,9 @@
   "main": "dist/server.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build": "npx tsc",
+    "start": "npm run build && node dist/server.js --ignore client",
     "seed": "node dist/seeds/seed.js",
-    "start": "node dist/server.js",
     "watch": "nodemon dist/server.js",
     "test": "vitest"
   },

@@ -1,9 +1,6 @@
 name: Deploy to Render on Merge to Main
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -12,7 +9,7 @@ on:
 
 jobs:
   deploy:
-    if: github.event.pull_request.merged == true || github.event_name == 'push'
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
@@ -37,10 +34,16 @@ jobs:
         run: 
           npm run render-build
 
+      - name: Seed database
+        env:
+          NODE_ENV: production
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        run: npm run seed --prefix server
+
       - name: Start application
         env:
-            NODE_ENV: production
-            MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          NODE_ENV: production
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run:
           npm run start
 
@@ -48,4 +51,4 @@ jobs:
         run: |
           curl -X POST \
             -H "Accept: application/json" \
-            ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+            "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
