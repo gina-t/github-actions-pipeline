@@ -34,12 +34,6 @@ jobs:
         run: 
           npm run render-build
 
-      - name: Seed database
-        env:
-          NODE_ENV: production
-          MONGODB_URI: ${{ secrets.MONGODB_URI }}
-        run: npm run seed --prefix server
-
       - name: Start application
         env:
           NODE_ENV: production
