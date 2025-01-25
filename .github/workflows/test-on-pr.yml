@@ -30,11 +30,6 @@ jobs:
       - name: Set environment variables
         run: echo "MONGODB_URI=mongodb://localhost:27017/techquiz" >> $GITHUB_ENV
 
-      - name: Seed database
-        run: npm run seed
-        env:
-          MONGODB_URI: mongodb://localhost:27017/techquiz
-
       - name: Start server
         run: npm run start &
         env:
