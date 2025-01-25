@@ -1,6 +1,6 @@
 import Question from "../models/Question.js";
 import cleanDB from "./cleanDb.js";
-import pythonQuestions from "./pythonQuestions.json" assert { type: "json" };
+import pythonQuestions from './pythonQuestions.json' assert { type: "json" };
 
 const seedDatabase = async () => {
   try {

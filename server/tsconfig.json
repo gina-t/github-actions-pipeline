@@ -4,9 +4,12 @@
     "composite": true,
     "rootDir": "src",
     "outDir": "dist",
-    "typeRoots": ["./node_modules/@types", "./types"],
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true
   },
-  "include": ["src", "**/*.json"]
+  "include": ["src", "**/*.json"],
+  "exclude": ["node_modules", "dist"]
 }
