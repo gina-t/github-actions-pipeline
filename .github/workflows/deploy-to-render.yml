@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20.18.0'
 
       - name: Install dependencies
         run: |
@@ -32,8 +32,8 @@ jobs:
         env:
           NODE_ENV: production
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
-        run: 
-          npm run render-build
+        run: |
+          npm run build
 
       - name: Seed database
         env:
@@ -45,8 +45,7 @@ jobs:
         env:
           NODE_ENV: production
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
-        run:
-          npm run start
+        run: npm run start
 
       - name: Deploy to Render
         run: |
