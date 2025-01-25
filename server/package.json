@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "type": "module",
   "scripts": {
-    "build": "npx tsc",
+    "build": "tsc",
     "start": "npm run build && node dist/server.js --ignore client",
     "seed": "node dist/seeds/seed.js",
     "watch": "nodemon dist/server.js",
@@ -25,7 +25,7 @@
     "@types/node": "^20.14.8",
     "msw": "^2.3.1",
     "nodemon": "^3.1.0",
-    "typescript": "^5.4.5",
+    "typescript": "^5.7.3",
     "vitest": "^2.0.1"
   }
 }
