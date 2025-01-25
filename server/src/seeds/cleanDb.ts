@@ -1,20 +1,10 @@
-// dynamic model handling approach
 import mongoose from 'mongoose';
 import connectDB from '../config/connection.js';
 import models from '../models/index.js';
 
-interface Models {
-  [key: string]: mongoose.Model<any>;
-}
-
-const cleanDB = async (modelName: "Question", collectionName: string): Promise<void> => {
+const cleanDB = async (collectionName: string): Promise<void> => {
   try {
-    await connectDB(); // Ensure the database is connected
-
-    const model = (models as Models)[modelName];
-    if (!model) {
-      throw new Error(`Model ${modelName} not found`);
-    }
+    await connectDB(); 
 
     const db = mongoose.connection.db;
     if (!db) {
@@ -24,7 +14,7 @@ const cleanDB = async (modelName: "Question", collectionName: string): Promise<v
     const collections = await db.listCollections({ name: collectionName }).toArray();
 
     if (collections.length) {
-      await model.collection.drop();
+      await models.Question.collection.drop();
       console.log(`${collectionName} collection dropped.`);
     }
   } catch (err) {
@@ -34,36 +24,3 @@ const cleanDB = async (modelName: "Question", collectionName: string): Promise<v
 };
 
 export default cleanDB;
-
-
-// import models from '../models/index.js';
-// import connectDB from '../config/connection.js';
-// import mongoose from 'mongoose';
-
-// type Model = mongoose.Model<any>;
-
-// export default async function cleanDb(modelName: "Question", collectionName: string): Promise<void> {
-//   try {
-//     await connectDB(); // Ensure the database is connected
-
-//     const model: Model | undefined = models[modelName];
-//     if (!model) {
-//       throw new Error(`Model ${modelName} not found`);
-//     }
-
-//     const db = mongoose.connection.db;
-//     if (!db) {
-//       throw new Error('Database connection not established');
-//     }
-
-//     const collections = await db.listCollections({ name: collectionName }).toArray();
-
-//     if (collections.length) {
-//       await db.dropCollection(collectionName);
-//       console.log(`${collectionName} collection dropped.`);
-//     }
-//   } catch (err) {
-//     console.error('Error cleaning collections:', err);
-//     throw err;
-//   }
-// }
