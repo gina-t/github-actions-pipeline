@@ -22,6 +22,11 @@ jobs:
         with:
           node-version: '20.18.0'
 
+      - name: Output runner IP address
+        run: |
+          echo "Runner IP address:"
+          curl ifconfig.me
+
       - name: Install dependencies
         run: |
           npm install
