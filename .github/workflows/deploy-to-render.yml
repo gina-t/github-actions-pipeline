@@ -35,6 +35,7 @@ jobs:
         run: |
           npm run build
 
+
       - name: Start application
         env:
           NODE_ENV: production
