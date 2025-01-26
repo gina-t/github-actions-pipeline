@@ -46,7 +46,6 @@ jobs:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: npm run seed
 
-
       - name: Start application
         env:
           NODE_ENV: production
