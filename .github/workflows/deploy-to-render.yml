@@ -57,6 +57,5 @@ jobs:
           RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
           echo "Deploying to Render with URL: $RENDER_DEPLOY_HOOK_URL"
-          curl -X POST \
-            -H "Accept: application/json" \
-            "$RENDER_DEPLOY_HOOK_URL"
+          curl -X POST -H "Accept: application/json" "$RENDER_DEPLOY_HOOK_URL"
+          echo "Deployment triggered"
