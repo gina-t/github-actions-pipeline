@@ -178,7 +178,7 @@ Branch Rules: check require a pull request before merging, check require status 
 
 Link to deployed app URL:
 
-[github-actions-pipeline](https://github-actions-pipeline.onrender.com/)
+[github-actions-pipeline](https://github-actions-pipeline.onrender.com)
 
 Screenshots of app demonstrating functionality:
 
