@@ -184,7 +184,7 @@ Screenshots of app demonstrating functionality:
 
 ### cypress test on pull request pipeline
 
-![clientDirectory](./client/src/assets/cypress-test-on-pull-request-pipeline-successful .png)
+![clientDirectory](./client/src/assets/cypress-test-on-pull-request-pipeline-successful.png)
 
 ### deploy to render on pull request pipeline
 
